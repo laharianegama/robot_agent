@@ -1,0 +1,13 @@
+{
+    "name": "Mary",
+    "preferences": {
+      "hobbies": ["gardening", "knitting"],
+      "comfort_topics": ["family", "nature"],
+      "dislikes": ["dark places", "loud noises"]
+    },
+    "schedule": {
+      "daughter_visits": "Friday",
+      "daily_routine": "Morning tea in the garden"
+    }
+  }
+  

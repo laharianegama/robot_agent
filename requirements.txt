@@ -1,0 +1,10 @@
+torch
+transformers
+streamlit
+Pillow
+accelerate
+sentence-transformers
+python-dotenv
+huggingface-hub
+groq
+streamlit-chat
