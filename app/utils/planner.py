@@ -1,22 +1,38 @@
-# app/utils/planner.py
-
-def build_prompt(vision_description: str, user_profile: dict) -> str:
-    name = user_profile.get("name", "the user")
-    dislikes = ", ".join(user_profile["preferences"].get("dislikes", []))
+def build_prompt(current_observation: str, user_profile: dict, past_observations: list) -> str:
+    name = user_profile["name"]
     hobbies = ", ".join(user_profile["preferences"].get("hobbies", []))
-    routine = user_profile.get("schedule", {}).get("daily_routine", "")
-    visits = user_profile.get("schedule", {}).get("daughter_visits", "")
+    dislikes = ", ".join(user_profile["preferences"].get("dislikes", []))
+    routine = user_profile["schedule"].get("daily_routine", "")
+    visits = user_profile["schedule"].get("daughter_visits", "")
+
+    past = "\n".join(f"- {obs}" for obs in past_observations[:-1])
+    memory_block = f"{past}" if past else "None yet."
 
     prompt = f"""
-You are a helpful and empathetic robot assistant helping {name}.
-Based on the following scene: "{vision_description}"
+You are a compassionate robot assistant assigned to help a woman named {name} in her home and surroundings.
 
-Here is what you know about {name}:
+Here are important facts about her:
+- Likes: {hobbies}
 - Dislikes: {dislikes}
-- Hobbies: {hobbies}
-- Daily Routine: {routine}
-- Daughter visits: {visits}
+- Routine: {routine}
+- Her daughter visits: {visits}
 
-Please generate a comforting and supportive message you would say to {name} in this situation.
+🧠 Memory of past observations:
+{memory_block}
+
+👁️ Current observation (most important, focus on this):
+- {current_observation}
+
+Now, speak directly to {name}. Respond as if you're physically next to her, seeing what you see now.
+
+Rules:
+- Be empathetic and emotionally appropriate
+- Focus mostly on the current observation
+- You may gently reflect on the past only if helpful
+- Keep it short, warm, and relevant (max 100 words)
+- Do not include meta reasoning or internal thoughts
+- Begin your response directly as if talking to Mary
 """
     return prompt.strip()
+
+

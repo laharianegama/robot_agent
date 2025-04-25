@@ -9,7 +9,7 @@ groq = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def generate_response(prompt: str) -> str:
     response = groq.chat.completions.create(
-        model="qwen-qwq-32b",
+        model="llama3-8b-8192",
         messages=[
             {
                 "role": "user",
