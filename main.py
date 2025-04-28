@@ -67,7 +67,7 @@ if uploaded_file is not None:
 
         # Step 1: Vision Model
         with st.spinner("🧠 Analyzing image with Groq's Vision model..."):
-            vision_description = describe_image(image)
+            vision_description = describe_image(image,current_task)
             save_observation(vision_description)
             st.markdown("**Image Description:**")
             st.info(vision_description)
@@ -84,7 +84,15 @@ if uploaded_file is not None:
             response = generate_response(prompt)
             st.markdown("### 🤖 Robot's Response")
             st.success(response)
-
+            # 🛠 NEW: Check if task seems completed
+            positive_signals = ["well done", "task complete", "great job", "you did it", "successfully completed"]
+            if any(signal in response.lower() for signal in positive_signals):
+                from app.utils.task_memory import mark_task_completed
+                mark_task_completed()
+                st.success("✅ Task marked as completed based on robot's feedback!")
+                
+                
+                
 # Display robot memory
 observations = get_observations()
 if observations:
