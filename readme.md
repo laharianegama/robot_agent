@@ -1,6 +1,6 @@
 # 🤖 Robot Companion Agent
 
-A personalized, image-driven robot assistant that simulates how a caregiving robot would perceive, remember, and respond to a user in real time.
+A personalized, image-driven robot assistant that simulates how a robot would perceive, remember, and respond to a user in real time.
 
 Built with:
 
@@ -25,10 +25,18 @@ Built with:
 
 ## 🛠 Setup Instructions
 
-### 1. Clone the Repository
+### 1. Clone the Repository and create a .env file
 
 ```bash
 git clone https://github.com/your-username/robot-companion-agent.git
+```
+
+```bash
+HUGGINGFACE_TOKEN= <YOUR TOKEN>
+GROQ_API_KEY= <YOUR TOKEN>
+```
+
+```bash
 cd robot-companion-agent
 pip install -r requirements.txt
 streamlit run main.py
