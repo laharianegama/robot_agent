@@ -31,10 +31,14 @@ Built with:
 git clone https://github.com/laharianegama/robot_agent.git
 ```
 
+### 2. Create a .env file and add your API Keys
+
 ```bash
 HUGGINGFACE_TOKEN= <YOUR TOKEN>
 GROQ_API_KEY= <YOUR TOKEN>
 ```
+
+### 3. Install the requirements and run the file
 
 ```bash
 cd robot-agent
