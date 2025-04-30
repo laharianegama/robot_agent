@@ -37,7 +37,7 @@ GROQ_API_KEY= <YOUR TOKEN>
 ```
 
 ```bash
-cd robot-companion-agent
+cd robot-agent
 pip install -r requirements.txt
 streamlit run main.py
 ```
