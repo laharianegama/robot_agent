@@ -28,7 +28,7 @@ Built with:
 ### 1. Clone the Repository and create a .env file
 
 ```bash
-git clone https://github.com/your-username/robot-companion-agent.git
+git clone https://github.com/laharianegama/robot_agent.git
 ```
 
 ```bash
